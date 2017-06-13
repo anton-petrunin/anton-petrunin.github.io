@@ -1,0 +1,724 @@
+\documentclass{article}
+\usepackage{amssymb, amsfonts, amsmath, amsthm}
+\usepackage{hyperref}
+\usepackage{enumerate}
+%\usepackage{graphicx}
+%\usepackage{url, multicol}
+
+\usepackage[active]{srcltx}
+
+
+\def\noi{\noindent}
+\def\CC{\mathbb{C}}
+\def\PP{\mathbb{P}}
+\def\NN{\mathbb{N}}
+\def\RR{\mathbb{R}}
+\def\ZZ{\mathbb{Z}}
+\def\QQ{\mathbb{Q}}
+
+\def\cA{{\mathcal A}}
+\def\cB{{\mathcal B}}
+
+\def\eps{\varepsilon}
+\def\ge{\geqslant}
+\def\le{\leqslant}
+\def\phi{\varphi}
+\def\i{\subset}
+\def\l{\left}
+\def\r{\right}
+\def\<{\langle}
+\def\>{\rangle}
+
+%operators
+\def\Const{\operatorname{Const}}
+\def\area{\operatorname{area}}
+\def\vol{\operatorname{vol}}
+\def\diam{\operatorname{diam}}
+\def\codim{\operatorname{codim}}
+\def\dim{\operatorname{dim}}
+\def\dir{\operatorname{dir}}
+\def\dist{\operatorname{dist}}
+\def\GHto{\buildrel \mathrm{GH} \over \longrightarrow}
+\def\pack{\operatorname{pack}}
+\def\Ric{\operatorname{Ric}}
+\def\Rm{\operatorname{Rm}}
+\def\Sc{\operatorname{Sc}}
+
+\mathsurround=1pt
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{quest}[thm]{Question}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{prob}[thm]{Problem}
+\newtheorem{property}[thm]{Property}
+\newtheorem{Example}[thm]{Example}
+\newenvironment{ex}{\begin{Example}\rm}{\end{Example}}
+\newtheorem{Counterexample}[thm]{Counterexample}
+\newenvironment{coex}{\begin{Counterexample}\rm}{\end{Counterexample}}
+\newtheorem{remark}[thm]{Remark}
+\newenvironment{rmk}{\begin{remark}\rm}{\end{remark}}
+\newtheorem{Fact}[thm]{$\!\!\!$}
+\newenvironment{fact}{\begin{Fact}\rm}{\end{Fact}}
+\newtheorem{Nothing}[thm]{$\!\!\!$}
+\newenvironment{nothing}{\begin{Nothing}\rm}{\end{Nothing}}
+
+
+\begin{document}
+
+\title{An upper bound for curvature integral}
+\author{Anton~Petrunin}
+\date{}
+\maketitle
+
+\begin{abstract}
+Here I show that the integral of scalar curvature of a closed Riemannian manifold
+can be bounded from above in terms of its dimension, diameter,
+and a lower bound for sectional curvature.
+\end{abstract}
+
+\section{Introduction.}
+
+Let us start with a formulation of the main result:
+
+\begin{Nothing}{\bf Theorem.}\label{main}
+Let $M$ be a complete Riemannian $m$-manifold with sectional curvature $\ge -1$.
+Then for any $p\in M$
+$$\int_{B_1(p)}\Sc\le \Const(m),$$
+where $B_1(p)$ denotes the unit ball centered at $p\in M$ and $\Sc$ --- scalar curvature of $M$.
+\end{Nothing}
+
+This result is optimal, as one can see in the following example:
+Consider a convex polyhedron $P$ in $\RR^{m+1}$, and let $\partial P_\eps$ denote the surface of its $\eps$-neighborhood (if necessary, one can smooth $\partial P_\eps$ to make it $C^\infty$-smooth).
+Then $\partial P_\eps$ are Riemannian $m$-manifolds with non-negative sectional curvature and the integral
+$\int_{\partial P_\eps}\Sc$
+remains nearly constant for small $\eps$, while for any $\theta>0$, the integral $$\int_{\partial P_\eps}|\Sc|^{1+\theta}\to \infty\ \ \text{as}\ \  \eps\to 0.$$
+
+Note that if one takes $P$ of codimension 2 or 3, this construction gives an example of families of collapsing Riemannian manifolds $\partial P_\eps$ with integral $\int_{\partial P_\eps}\Sc$ bounded below by a positive constant.
+The Corollary \ref{cor} below shows that this is no longer possible if the collaps drops dimension by $3$ or more.
+
+\begin{nothing}{\bf Variations and generalizations.}
+The Bishop--Gromov inequality implies that any ball of radius $R$ in a complete Riemannian $m$-manifold with sectional curvature $\ge -1$ can be covered by $\exp(4m R)$ unit balls, so subsequently this theorem can be generalized the following way:
+
+$$\int_{B_R(p)}\Sc\le \Const(m)\exp(4m R).$$
+On the other hand, the rescaling shows that
+for radius $R<1$,
+$$\int_{B_R(p)}\Sc\le \Const(m)R^{m-2}.$$
+All these together lead to
+\end{nothing}
+\begin{Nothing}{\bf Corollary} \label{cor} Let $M$ be a complete Riemannian
+$m$-manifold with sectional curvature $\ge -1$ and $p\in M$.
+Then $$\int_{B_R(p)}\Sc\le \Const(m)R^{m-2}\exp(4m R).$$
+\end{Nothing}
+
+Also, it is easy to see that if a Riemann curvature tensor $\Rm_p$ at point $p$ of a Riemannian $m$-manifold has all sectional curvatures
+$\ge 0$, then
+$$|\Rm_p|\le \Sc_p.$$
+It follows that if instead we have all sectional curvatures
+$\ge -1$, then
+$$|\Rm_p|\le \Sc+m^2.$$
+Therefore, the last corollary also implies that
+$$\int_{B_R(p)}|\Rm|\le \Const'(m)R^{m-2}\exp(4m R),$$
+where
+$$\Const'(m)=\Const(m)+m^2.$$
+
+\begin{nothing} I believe that in 1996 Gromov asked me whether the integral
+of the scalar curvature could be bounded in terms of a diameter and lower curvature bound.
+However, after 10 years I can not be sure that it was exactly the question he asked.
+
+My proof is similar to the Perelman's proof of continuity of the integral of
+the scalar curvature
+$$\mathcal F(M)=\int_M \Sc$$
+on the set of all Riemannian $m$-manifolds with a uniform lower curvature bound.
+Perelman's proof uses exhausting of the manifold by convex hypersurfaces (this proof is included as an appendix in \cite{Pet}).
+In fact just a slight modification of Perelman's proof makes it possible to prove
+the main theorem in the non-collapsing case, i.e. in the case one adds a lower bound
+for the volume of the ball, $$\vol(B_1(p))\ge v_0>0$$
+as an extra condition.
+
+In addition I use a special form of Bochner's formula (see \ref{boch});
+a similar idea was used by Sergei Buyalo for lower estimates of
+the integral of the scalar curvature on a 3-manifold \cite{Buy}.
+This formula makes it possible to estimate curvature not only in tangent
+but also in normal directions to the exhausting surfaces
+(which is necessarily to make the proof work in the collapsing case).
+Also, I had to use exhaustions by nested sequences of semiconvex surfaces,
+which causes additional technical difficulty.
+
+The rest of the proof is a combination of converging-rescaling technique.
+\end{nothing}
+\begin{nothing}{\bf Frame of the proof.}
+Arguing by contradiction, assume that there is a sequence of $m$-manifolds $(M_n,p_n)$ with $K\ge -1$ such that $$\int_{B_1(p_n)}\Sc\to\infty.$$
+Applying Gromov's compactness theorem we can assume that $(M_n,p_n)$ converges to an Alexandrov space $(A,p)$.
+Using the induction hypothesis (the fact that a slightly more general statement
+is true for all smaller dimension) we prove that the scalar curvature on $M_n$
+weakly converges to a measure on $A$ which is finite everywhere except
+a finite number of points.
+We choose one of these points $s\in A$ and blow up $M_n$ with carefully chosen
+marked points $s_n\in M_n$ near $s$ to make curvature distribution visible,
+then pass to the new limit space $(A',p')$.
+Repeat for $(A',p')$ the same procedure as for $(A,p)$ and so on.
+The statement follows since there will be only a finite number of such repetitions.
+The last statement follows from the fact that $(A',p')$ is in a certain sense,
+by certain amount bigger than $(A,p)$ and it can not be bigger than $(\RR^m,0)$.
+\end{nothing}
+
+\begin{nothing}{\it Acknowledgements.}
+I would like to thank Nina Lebedeva and Yuri Burago for their comments to the original version of
+this article and noticing mistakes;
+I am also thankful to Fyodor Zarkhin for correcting my English.
+\end{nothing}
+
+\section{Bochner formula.}
+
+This section provides a form of Bochner formula which links the integral of
+the scalar curvature of a family of hypersurfaces with the integral of the Ricci
+curvature in their normal directions.
+
+\begin{nothing}{\bf Notation.}
+Let $M^{m+1}$ be a Riemannian $(m+1)$-manifold.
+Assume $f:M^{m+1}\to \RR$ is a smooth function without critical values on $[a,b]\i \RR$ and its level sets $L_t=f^{-1}(t)$ are compact for any $t\in [a,b]$.
+Let
+\begin{enumerate}[(i)]
+\item $u=\nabla f/|\nabla f|$ be the unit vector field normal to $L_t$,
+\item $\{e_0,e_1,e_2,...,e_m\}$ an orthonormal frame such that $e_0=u$ and each
+$e_i$, $i>0$ is chosen in a principle directions of
+$L_{f(x)}$ at $x$ such that the corresponding principle curvatures
+$$\kappa_i=\<\nabla_{e_i}u,e_i\>.$$
+form a nondecreasing sequence
+$$\kappa_1(x)\le\kappa_2(x)\le...\le\kappa_m(x).$$
+\item $H(x)=\kappa_1(x)+\kappa_2(x)+...+\kappa_m(x)$ mean curvature of $L_{f(x)}$ at
+$x\in L_{f(x)}$,
+\item $G(x)=2\sum_{i<j}\kappa_i(x)\kappa_j(x)$ the external term in the Gauss formula
+for the scalar curvature of $L_t$, i.e.
+$$\Sc_{L}=2\sum_{i<j}\<R_M(e_i,e_j)e_j,e_i\>+G=\Sc_M-2\Ric_M(u,u)+G.$$
+\end{enumerate}
+\end{nothing}
+
+\begin{Nothing}{\bf Bochner formula.}\label{boch} Using this notation one can write the Bochner formula in the following form:
+$$\int_{f^{-1}([a,b])} \Ric_M( u, u)=\int_{f^{-1}([a,b])} G+\int_{L_a}H-\int_{L_b}H \qquad(*) $$
+\end{Nothing}
+
+\
+
+\paragraph*{Proof.} Let us write relative Bochner formula for the vector field
+$u=\nabla f/|\nabla f|$ in the domain $f^{-1}([a,b])$:
+$$
+\int_{f^{-1}([a,b])}\langle Du,Du \rangle
+-
+\langle \nabla u,\nabla u \rangle
+=
+\int_{f^{-1}([a,b])} \Ric_M( u, u)-\int_{L_a}H+\int_{L_b}H.
+$$
+Since $e_0=u$ and $\<\nabla_u u,u\>=0$,
+$$ Du=\sum_{i=0}^{m} e_i\cdot \nabla_{e_i}u=
+\sum_{i=1}^{m}\kappa_i e_i\cdot e_i+u\cdot \nabla_{u}u=
+\sum_{i=1}^{m}\kappa_i+u\wedge\nabla_{u}u,$$
+here ``$\,\cdot\,$'' denotes the Clifford multiplication.
+Applying again that $\<\nabla_u u,u\>=0$,
+$$ \langle Du,Du \rangle=\l(\sum_{i=1}^{m}\kappa_i\r)^2+|\nabla_{u}u|^2.$$
+On the other hand
+$$\nabla u=\sum_{i=1}^m\kappa_ie_i\otimes e_i+\nabla_u u\otimes u,$$
+hence
+$$\langle\nabla u,\nabla u\rangle =
+\sum_{i=1}^{m}\kappa_i^2+|\nabla_{u}u|^2.$$
+
+Therefore
+
+$$\langle D u,D u\rangle-\langle \nabla u,\nabla u \rangle =2\sum_{i<j}\kappa_i\kappa_j=G.$$
+
+I.e., in this notation the Bochner formula boils down to $(*)$.\qed
+
+\section{Constructions in Alexandrov's geometry.}
+
+This section contains all the necessary technical results in Alexandrov's geometry,
+mainly related to {\it corner surfaces}.
+A corner surface is a generalization of semi-convex hypersurfaces to all codimension.
+Roughly speaking it is an intersection of semi-convex hypersurfaces which have acute angles
+between each other.
+
+These level sets will be used in the proof in the same manner as convex hypersurfaces in Perelman's original proof.
+
+Everywhere in this section we use notation and conventions as in  \cite{petrunin-2}.
+
+The following definition is very similar to the definition of strained (bursted) points
+in \cite{BGP}, but I use it for submanifolds and have to add an extra parameter
+$\ell$ which describes how wide strainers should be.
+
+\begin{Nothing}{\bf Definition.} A subset  $M$ of an Alexandrov space $N$
+is a \emph{$(k,\delta,\ell)$-corner surface} if there is a collection of
+$1/\ell$-concave functions $f_i, g_i:N\to \RR$, $i\in \{1,..,k\}$
+(called \emph{strainers} of $M$), defined in an $\ell$-neighborhood of $M$ such that
+
+$$M=\{x\in N|f_i(x)=0\ \text{for all} \  1\le i\le k\},$$
+the collection $f_i, g_i:N\to \RR$ is $\delta$-strained, i.e.
+\begin{enumerate}[(i)]
+\item all $f_i$, $g_i$ are 1-Lipschitz,
+\item for all $i\not=j$,
+$$|df_i(\nabla g_j)|,\,|dg_i(\nabla f_j)|,\,|dg_i(\nabla g_j)|,\, |df_i(\nabla f_j)|\le\delta$$
+%$$\angle(\nabla f_i,\nabla f_j),\angle(\nabla f_i,\nabla g_j), \angle(\nabla g_i,\nabla g_j)\in[\pi/2- \delta;\pi/2+ \delta],$$
+\item $df_i(\nabla g_i), dg_i(\nabla f_i)\le -1+2\delta$
+%$\angle(\nabla f_i,\nabla g_i)\ge \pi-\delta$.
+
+\noi \!\!\!\!\!\!\!\!\!\!\!\!\!\!and the collection $f_i:N\to \RR$ is tight, i.e
+
+\item for any $x\in M$ and all $i\not=j$,
+$$df_i(\nabla f_j)\le 0 $$
+%$$\angle(\nabla_x f_i,\nabla_x f_j)\ge\pi/2.$$
+\end{enumerate}
+If in addition $N$ is a smooth Riemannian manifold and all functions
+$\{f_i\}$ are smooth then $M$ is called {\it smooth $(k,\delta,\ell)$-corner surface}.
+\end{Nothing}
+
+\noi{\bf Remarks.} In this definition one can take $k=0$, in this case $M=N$.
+
+Conditions (i)--(iv) guarantee that functions $f_i$ do not have critical points and
+their level sets intersect with acute angles which are close  to $\pi/2$.
+
+Note that if one rescales the metric on $N$ with factor $\lambda$ then a
+$(k,\delta,\ell)$-corner surface $M$ becomes a $(k,\delta,\lambda\ell)$-corner
+surface in $\lambda N$ with strainers $\{\lambda f_i,\lambda g_i\}$.
+
+
+
+\begin{nothing}{\bf Limits of strained level sets.}\label{conv} Assume we have a sequence of $q$-manifolds $(N_n,p_n)$ with marked points and sectional curvature $\ge -1$.
+Let $M_n\i N_n$ be a sequence of $(k,\delta,\ell)$-corner surfaces  defined by collections of strainers
+$$\{f_{i,n},\ g_{i,n}\},\ \  i\in\{1,\dots,k\}, \ \ f_{i,n},\,g_{i,n}:N_n\to \RR.$$
+One can pass to a subsequence of $N_n$ to have convergences
+\begin{enumerate}[(i)]
+\item $(N_n,p_n)\GHto (N,p)$,
+\item $M_n\to M\i N$,
+\item  for each $i\in \{1,\dots,k\}$, $f_{i,n}\to f_i:N\to \RR$ and $g_{i,n}\to g_i:N\to \RR$.
+\end{enumerate}
+Clearly $N$ is an Alexandrov space of the dimension at most $q$ with curvature $\ge -1$ and
+$M$ is a $(k,\delta,\ell)$-corner surface with strainers $f_i,g_i:N\to \RR$.
+
+Moreover, if $M$ is compact and $m=q-k$, then
+$$\vol_m M=\lim_{n\to\infty}\vol_m M_n.$$
+This statement follows from the proof of \cite[Th. 10.8]{BGP}.
+\end{nothing}
+
+\begin{nothing}{\bf A dimension-like invariant.}\label{dir}
+Here we introduce an invariant of Alexandrov spaces,
+which has properties similar to the dimension, but a bit more sensitive.
+
+Let $A$ be an Alexandrov space with dimension $\le q$.
+Given a positive number $\theta>0$ let us define $\dir_\theta A$ to be
+$$\dir_\theta A=\min_{x\in A}\pack_\theta \Sigma_x A$$
+where $\Sigma_x A$ is the space of directions at $x\in A$ and $\pack_\theta \Sigma_x A$
+denotes the maximal number of points in $\Sigma_x A$ at the distance
+$> \theta$ from each other.
+
+
+Clearly $\dir_\theta A$ is an integer and
+$$\dir_\theta A\le \Const(\theta,\dim A)\le \pack_\theta S^q.$$
+\end{nothing}
+
+
+
+\begin{nothing}{\bf A special way to lift points.}\label{approx}
+Here we introduce a special way to lift a point from an Alexandrov space to a nearby
+Riemannian manifold.
+More precisely, we describe a way to lift a spire (see below)
+on a $(k,\delta,\ell)$-corner surface in an Alexandrov space to
+a nearby $(k,\delta,\ell)$-corner surface in a nearby Riemannian manifold.
+
+This technique will be used just once, at the very end of the proof
+of the implication
+B$_{m} \Rightarrow$A$'_m$ (\ref{BtoA}) of the monster-lemma \ref{monster};
+for the rest, any kind of lifting will do the job.
+
+\
+
+Assume that $N_n\to N$ is a sequence of Riemannian $q$-manifolds with curvature $\ge -1$ converging to an Alexandrov space $N$.
+Let $\delta>0$ be sufficiently small.
+Let $M_n\i N_n$ be a sequence of  $(k,\delta,\ell)$-corner surfaces which converges to $M\i N$ (see \ref{conv}).
+
+Consider a positive function $b$ on $M$, which takes maximal possible value $b(x)$ such that
+$$\bigl|\nabla_y\dist_x\bigr|> 1-\delta\ \text{for any}\  y\in B_{2b(x)}(x)\backslash \{x\}\ \text{and}\ 2b(x)\le\max\{1,\delta\ell\}$$
+
+\begin{Nothing}{\bf Definition.}\label{spire}
+A point $x$ on a $(k,\delta,\ell)$-corner surface is called a spire if for any $y\in M$, $y\not=x$ we have $b(y)\le |x y|$.
+\end{Nothing}
+
+Let us show that if $x$ is a spire then there is a sequence of points $x_n\in M_n$ which converges to $x\in M$ and satisfies the following property:
+
+
+
+\begin{Nothing}
+{\bf Property.}\label{property} Let $a_n$ be the minimal number such that
+$$|\nabla_y\dist_{x_n}|> 1-\delta\ \text{for all points}\ y\in N_n \ \text{such that}\  a_n<|x_n y|\le b$$
+Then $a_n=0$ for arbitrarily large $n$ or if
+$(N', x')$ is a partial limit of $(\frac1{a_n}N_n, x_n)$ then
+$$\dir_\delta N'>\dir_\delta N \ \ \text{(see \ref{dir})}.$$
+
+\end{Nothing}
+
+\begin{nothing}{\bf The construction.}\label{constr}
+Let us define $a(\tilde x_n)=a_{\delta,b}(\tilde x_n)$ for any $\tilde x_n\in N_n$ to be the minimal number such that
+$$|\nabla_y\dist_{\tilde x_n}|> 1-\delta\ \  \text{if}\ \ a(\tilde x_n)<|\tilde  x_n y|\le b.$$
+Note that for any sequences $M_n\ni \bar x_n\to x$ and $M_n\ni y_n\to y\not= x$, we have
+$$\liminf_{n\to\infty}|\nabla_{y_n}\dist_{\bar x_n}|\ge |\nabla_y\dist_{x}|,$$
+therefore $a(\bar x_n)\to 0$ as $n\to \infty$.
+
+Now fix one such sequence $\bar x_n\to x$ and let
+$x_n\in M_n\cap B_r(\bar x_n)\i N_n$
+be a point with minimal possible $a(x_n)$,
+here $r$ is a sufficiently small fixed number.
+
+Set $a_n=a(x_n)$, since $x$ is a spire, we have $x_n\to x$ and in particular $(N_n,x_n)\to (N,x)$.
+
+All that remains to prove is that the chosen sequence satisfies property \ref{property}.
+
+Assume $a_n>0$ for all large $n$.
+Let us pass to a subsequence so that $(\frac1{a_n}N_n,x_n)\to (N', x')$.
+Clearly, for any $\theta>0$
+$$\dir_\theta N'\ge \pack_\theta \Sigma_x N\ge \dir_\theta N.$$
+Therefore, we only have to show  that if $\theta=\delta$ then the first inequality is strict.
+
+If the equality takes place, then there is a point $p\in  N'$ such that $\pack_\delta \Sigma_{p}N'=\pack_\delta \Sigma_x N=s$.
+Let us show that if $p_n\in \frac1{a_n}N_n$ is a sequence of points converging to
+$p$ then $\frac1{a_n}a(p_n)\to0$. In particular, for large $n$ we have $a(p_n)<a(x_n)$,
+which contradicts the choice of $x_n$ (here we denote by $p_n$ point in $\frac1{a_n}N_n$
+as well as the respective point in $N_n$).
+
+Choose points $q_1,q_2,..,q_s\in N$ such that $\angle q_i x q_j>\delta$ if $i\not=j$.
+Let $q_{i,n}\in N_n$ be a sequence converging to $q_i\in N$.
+Let $y_n\in N$ be a point such that
+$|p_n y_n|_N\to 0$ and $|\nabla_{y_n}\dist_{p_n}|\le 1-\delta$.
+Then it is easy to see that $\angle y_n p_n q_n\ge 2\delta$ for large $n$,
+and passing to the limit $n\to\infty$ we get $\pack_\delta \Sigma_x N>s$, a contradiction.
+\end{nothing}
+\end{nothing}
+
+
+\section{Proof of the Theorem}
+
+\begin{nothing}{\bf Notation.}
+ Let $X$ be Riemannian manifold, $x\in X$ and $\sigma$ a sectional direction at $x$.
+We denote by $K_X(\sigma)$ the sectional curvature of $X$ in the direction $\sigma$.
+Let us set
+$$K^\pm_X(x)=\max\{0,\max_\sigma\{\pm K(\sigma)\}\},$$
+where $\sigma$ runs over all sectional directions at $x$.
+
+%\item $\Const(x,y,z)$ will denote a positive constant which depends only on $x,y,z$, it can denote different constants, even in the same formula. For example, it is OK to write
+%$$\Const(x,y,z)=\Const(x,y,z)+1.$$
+
+%\item Calligraphic letters like $\cA(x,y,z), \cB(x,y,z)$ will denote a positive constant which depends only on $x,y,z$.
+
+\end{nothing}
+%\pagebreak
+
+Theorem \ref{main} follows from the following statement for $k=0$.
+
+\begin{Nothing}{\bf Theorem.} There is $\delta=\delta(q,k)>0$ such that if $N$ is
+a Riemannian $q$-manifold with sectional curvature $\ge -1$ and $M\i N$ is
+a complete smooth $(k,\delta,\ell)$-corner surface, then
+$$\int_{M\cap B_1(x)}\Sc^+_M\le \Const(q,k,\ell)\l[1+\int_{M\cap B_2(x)}K^-_M\r]$$
+for any $x\in N$.
+\end{Nothing}
+
+If $\dim M\ge 3$, this follows from statement A$'_k$ of the monster-lemma \ref{monster} below and the case $\dim M= 2$ follows from 3-dimensional case for $M\times S^1\i N\times S^1$.
+
+\begin{Nothing}{\bf Monster-lemma.}\label{monster}
+There are constants $\cA_k=\cA(q,k,\ell)$, $\cA'_k=\cA'(q,k,\ell)$,  $\cB_k=\cB(q,k,\ell)$ and a sequence of small positive  constants $\delta_k$, $k=\{0,1,..,q-2\}$ such that if
+\begin{description}
+\item $N$ is a Riemannian $q$-manifold with sectional curvature $\ge -1$,
+%\item $\delta_k=\exp(-10^{q-k}q)$ and
+\item $M\i N$ be a complete  smooth  $(k,\delta_k,\ell)$-corner surface
+\end{description}
+then for any $k\in \{0,1,..,q-3\}$ the following statements are true:
+
+\begin{description}
+
+\item{A$_k$.} If $\diam M\le 1$, then
+$$\int_{M}\Sc^+_M\le \cA_k\l[1+\int_{M}K^-_M\r].$$
+
+
+\item{A$'_k$.} For any $x\in N$
+$$\int_{M\cap B_1(x)}\Sc^+_M\le \cA'_k\l[1+\int_{M\cap B_2(x)}K^-_M\r].$$
+
+
+\item{B$_k$.}
+Assume that for some $x\in M$ we have $|\nabla_y\dist_x|>1-\delta_k$ for all
+$y\in N$ such that $a<|x y|<2b<\max\{1,\delta\ell\}$, then
+$$\int_{\dist_x^{-1}([2a,b])\cap M}\Sc^+_{M}
+\le  \cB_k\l[1+\int_{\dist_x^{-1}([a,2b])\cap M}K^-_{M}\r].$$
+\end{description}
+\end{Nothing}
+
+
+
+
+\paragraph*{Proof.} Clearly ${\rm A}'_k\Rightarrow {\rm A}_k$.
+Therefore in order to prove Lemma it is enough to prove the following statements:
+${\rm A}_{q-2}$ and ${\rm A}_k\Rightarrow {\rm B}_{k-1}$, ${\rm B}_k\Rightarrow {\rm A}'_{k}$ for each $k$.
+
+\begin{nothing}{\bf $\boldmath{\text{A}_{q-2}}$.}
+In this case $\dim M=2$, therefore $\Sc_M^\pm=2K_M^\pm$.
+Then the statement follows from the Gauss--Bonnet formula:
+$$\int_M K_M^+=\int_M K_M+ \int_M K_M^-\le 4\pi\l(1+\int_M K_M^-\r).$$
+So one can take $\cA_{q-2}=8\pi$.
+\qed
+\end{nothing}
+
+\begin{nothing}{\bf$\boldmath{\text{A}_{k}\Rightarrow\text{B}_{k-1}}$.} Assume $\{f_i,g_i\}$, $i=\{1,..,k-1\}$ is a set of strainers for $M$.
+Let us consider the function $f:M\to \RR$ defined by the following formula:
+$$f(y)=(1-\delta_k)\widetilde{\dist}_x(y)
++
+\frac{\delta_k}k \sum_{i=1}^{k-1}(g_i(y)-g_i(x)).$$
+where $\widetilde{\dist}_x$ denotes a smoothing of the distance function ${\dist}_x$.
+On the set $\dist^{-1}([a,2b])\cap M$, we clearly have
+$$1-2\delta_k\le \frac{f(y)}{\dist_x y} < 1.$$
+Therefore to prove B$_{k-1}$, it is enough to show that for some constant $\cB(q,k,\ell)$ we have
+$$\int_{f^{-1}([a,b])}\Sc^+_{M}
+\le \cB(q,k,\ell)\l[1+\int_{f^{-1}([a,\tfrac32b])}K^-_{M}\r] \qquad (**)$$
+
+On the set $\dist^{-1}([a,2b])\cap M$, the function $f$ behaves similarly to $\dist_x$,
+in addition it is smooth and its level subsets form corner surfaces in $N$
+(so we can apply A$_k$). Moreover,
+$f$ satisfies the following properties (compare with \cite[11.8]{BGP})
+
+The function $f$ \label{f-prop}is a semiconcave in a neighborhood of $f^{-1}([a,\tfrac32b])$ and for some $\alpha=\alpha(q,k,\ell)>0$ we have:
+\begin{enumerate}[(i)]
+\item\label{grad}$1\ge |\nabla f|>1/\alpha$ everywhere in $f^{-1}([a,\tfrac32b])$ on $M$,
+in particular
+$f:M\to \RR$
+does not have critical values on $[a,\tfrac32b]$.
+\item\label{geom} for any $t\in [a,\tfrac32b]$, the level set $L_t=f^{-1}(t)$
+forms a compact smooth $(k,\delta_{k},t/\alpha)$-strained level set in $N$
+and if $m=\dim L_t=q-k$, we have
+\begin{enumerate}[a)]
+\item $A(t)\buildrel \text{def}\over=\vol_{m} L_t\le \alpha t^{m}$.
+\item $\diam L_t\le \alpha t$,
+\item the principle curvatures of $L_t$ in $M$ are at most $\alpha/t$.
+
+Namely, if $u=\nabla f/|\nabla f|\in T M$ then for any unit vector $v$ tangent to $L_t$,
+$$\<\nabla_v u,v\>\le \alpha/t,$$
+where $\nabla$ denotes the Levi-Civita connection on $M$.
+\end{enumerate}
+\end{enumerate}
+
+To prove that $L_t=f^{-1}(t)$ is a $(k,\delta_{k},t/\alpha)$-corner surface in $N$,
+it is enough to add two functions to the collection of strainers of $M$,
+one can take $f_k=f$ and $g_k=\dist_{L_{(1+\eps)t}}$ for a sufficiently
+small constant $\eps>0$.
+To prove the volume estimate, one can argue by contradiction,
+using the convergence of the volume of corner surfaces, see \ref{conv}.
+Details of these proof are left to the reader.
+
+
+%In the proof of $(**)$ conditions (\ref{grad}) and (\ref{geom}) will be used separately. Condition (\ref{geom}) will be used only in the end of the proof of inequality. A$_{m}$ will be used just once in the middle of proof of main inequality.
+
+\paragraph*{Notation.}
+\begin{enumerate}[(i)]
+\item $\kappa_1(x)\le \kappa_2(x)\le...\le \kappa_m(x)$ are the principle curvatures
+of $L_t\i M$ at $x\in L_t$ with respect to $u$.
+\item $\beta:[a,b]\to \RR_+$ is an upper bound for the principle curvatures on $L_t$,
+i.e. $\kappa_m(p)\le \beta_t$ for any $p\in L_t$ (for condition (\ref{geom}), one can take $\beta(t)= \alpha/t$ but to simplify calculations we will substitute it only at the very end)
+\item $H(x)=\kappa_1(x)+ \kappa_2(x)+...+ \kappa_m(x)$ is the mean curvature of
+$L_{t}$ at $x\in L_{t}$ and $$H^\pm(x)=\max\{0,\pm H(x)\}$$
+denotes positive/negative part of $H(x)$.
+
+Note that we choose the signs of $\kappa_i$ to have the following formula:
+$$A'(t)=\int_{L_t}H/|\nabla f|.$$
+\item $G(x)=2\sum_{i<j}\kappa_i\kappa_j$ is the external term in the Gauss formula
+for the scalar curvature of $L_t$, i.e.
+$$\Sc_{L}=2\sum_{i<j}\<R_M(e_i,e_j)e_j,e_i\>+G=\Sc_M-2\Ric_M(u,u)+G$$
+for an orthonormal frame $\{e_i\}$ of the tangent space to $L$.
+\end{enumerate}
+
+\paragraph*{Trivial inequalities.}
+\begin{enumerate}[(i)]
+\item\label{gauss1} Let $L\i M$ be a hypersurface, by the Gauss formula we have
+$$
+\Sc_{L}
+=
+\Sc_{M}-2\Ric_{M}(u,u)+G.
+$$
+
+therefore
+$$
+\Sc^+_{M}
+\le
+\Sc^+_{L}+m(m-1)K^-_{M}+2\Ric_{M}(u,u)-G
+\le$$
+$$\le
+\Sc^+_{L}+m^2K^-_{M}+2\Ric_{M}(u,u)-G.
+$$
+and
+$$G\le \Sc^+_{L} + (m-1)(m-2)K^-_{M}\le$$
+$$\le \Sc^+_{L} + m^2K^-_{M}$$
+
+\item\label{gauss2} Again, by the Gauss formula we have
+$$K^-_{L}\le K^-_{M}+ (H^-+m\beta)\beta.$$
+
+\item\label{H} Clearly $H^+(x)\le m\beta_t$ for any $x\in L_t$, thus
+$$\int_{L_t}H^+\le m\beta_t A(t),$$
+therefore
+$$\int_ {L_t}H^-\le \int_{L_t}H^-/|\nabla f|
+=
+\int_{L_t}H^+/|\nabla f|-\int_{L_t}H/|\nabla f|\le$$
+$$\le m\alpha \beta_t A(t)-A'(t)$$
+\end{enumerate}
+
+\paragraph{\bf Intermediate inequality.} Let us prove first that
+$$\int_{f^{-1}([a,b])}\Sc^+_{L}
+\le \Const(q,k,\ell)\l[1+\int_{f^{-1}([a,b])}K^-_{M}\r]\qquad (\diamondsuit)$$
+Indeed, since $|\nabla f|\ge 1/\alpha$,
+$$\int_{f^{-1}([a,b])}\Sc^+_{L}
+\le
+\alpha\int_a^b d t \int_{L_t}\Sc^+_{L}
+\le $$
+then, applying A$_k$ for $L_t$,
+$$
+\le \cA(q,k,\ell)\alpha\int_a^b d t\l(1+\int_{L_t} K^-_{L_t}\r)
+\le$$
+then, applying the trivial inequalities above,
+$$\le
+\cA(q,k,\ell)\alpha\int_a^b d t\l(1+\int_{L_t} [K^-_{M}+ (H^-+m\beta_t)\beta_t]\r)
+\le$$
+$$
+\le \cA(q,k,\ell)\alpha\l[(b-a)+\int_{f^{-1}([a,b])}K^-_{M}+m(1+\alpha)\int_a^b A(t)\beta_t^2-\int_a^b A'(t)\beta_t\r]$$
+applying that $0<a<b\le 1$, $\alpha=\alpha(q,k,\ell)$, $\beta_t=\alpha/t$ and $A(t)\le \alpha t^m$ we obtain $(\diamondsuit)$.
+
+
+\paragraph*{Main inequality.}
+$$\int_{f^{-1}([a,b])}\Sc^+_{M}
+\le $$
+$$\le
+\int_{f^{-1}([a,b])}\Sc^+_{L}
++m^2\int_{f^{-1}([a,b])}K^-_{M}
++2\int_{f^{-1}([a,b])}\Ric(u,u)-\int_{f^{-1}([a,b])}G
+\le
+$$
+by the relative Bochner formula,
+$$
+\le
+\int_{f^{-1}([a,b])}\Sc^+_{L}
++m^2\int_{f^{-1}([a,b])}K^-_{M}
++\int_{f^{-1}([a,b])}G
++2\int_{L_a}H
+-2\int_{L_b}H
+\le
+$$
+applying inequality~(\ref{gauss1}),
+$$
+\le
+2\int_{f^{-1}([a,b])}\Sc^+_{L}
++2m^2\int_{f^{-1}([a,b])}K^-_{M}
++2\int_{L_a}H^+
++2\int_{L_b}H^-
+\le
+$$
+then applying the intermediate inequality $(\diamondsuit)$ and estimates for
+the integrals of $H^\pm$ we get
+$$\le\Const(q,k,\ell)\l[1+\int_{f^{-1}([a,b])}K^-_{M}\r] +m\beta_a A(a)+m\alpha \beta_b A(b)-A'(b)\le$$
+$$\le \Const(q,k,\ell)\l[1+\int_{f^{-1}([a,b])}K^-_{M}\r]-A'(b).$$
+In particular, for any $\tau\in [b,\tfrac32b]$ we have
+$$\int_{f^{-1}([a,b])}\Sc^+_{M}
+\le \Const(q,k,\ell)\l[1+\int_{f^{-1}([a,\tfrac32b])}K^-_{M}\r]-A'(\tau).$$
+Since $0\le A(t)\le \alpha t^m$ (see page~\pageref{f-prop}), we get that for some $\tau\in [b,\tfrac32b]$, $(-A'(\tau))\le 2\alpha b^{m-1}$. Therefore we obtain $(**)$.\qed
+
+
+
+\end{nothing}
+\begin{nothing}{\bf$\boldmath{\text{B}_{k} \Rightarrow\text{A}'_k}$.}\label{BtoA}
+We will argue by contradiction,
+assuming that A$'_k$ is false.
+Then there is a sequence of $q$-manifolds $N_n$ with sectional curvature $\ge -1$
+with $(k,\delta_k,\ell)$-corner surfaces $M_n\i N_n$ defined by strainers $\{f_{n,i},g_{n,i}\}$
+and a sequence of points $x_n\in N_n$ such that
+$$\frac{\int_{M_n\cap B_1(x_n)}\Sc^+_{M_n}}{1+\int_{M_n\cap B_2(x_n)}K^-_{M_n}}\to\infty \ \ \mbox{as}\ \ n\to\infty.\qquad(\bigstar)$$
+One can pass to a subsequence of $N_n$ to have the following convergences (see \ref{conv}):
+
+\begin{enumerate}[(i)]
+\item $(N_n,x_n)\to (N,x)$, $N$ is an Alexandrov space of dimension at most $q$ and curvature $\ge -1$,
+\item  for each $i\in \{1,\cdots,k\}$, $f_{i,n}\to f_i:N\to \RR$ and $g_{i,n}\to g_i:N\to \RR$.
+\item $M_n\to M\i N$, where $M$ is a $(k,\delta_k,\ell)$-corner surface with strainers $f_i,g_i:N\to \RR$.
+\end{enumerate}
+
+\paragraph*{Case with no spires.} Assume that $M$ has no spires (see \ref{spire}).
+Then, since $M\cap \bar B_1(x)\i N$ is compact, it can be covered by
+a finite number of annuli
+$$\operatorname{Ann}_{x_i}=\{y\in M|0<|x_i y|<b(x_i)\}, \ i=\{1,2,..,s\}$$
+Choose a sequence $x_{i,n}\in M_n$ converging to $x_i\in M$.
+Set $b_i=b(x_i)$ and $a_{i,n}=a_{\delta_k,b_i}(x_{i,n})$ (see \ref{constr}).
+As it is shown in \ref{constr}, $a_{i,n}\to 0$ as $n\to\infty$.
+Then, if $n$ is large, applying B$_k$ for each $x_{i,n}$ with pair $(a_{i,n},b_i)$, we get
+$$\int_{M_n\cap B_1(x_n)} \Sc^+_{M_n}
+\le$$
+$$\le
+\sum_{i=1}^s
+\int_{\{y\in M_n|2a_{i,n}<|x_{i,n}y|<b_i\}} \Sc^+_{M_n}\le$$
+$$\le\sum_{i=1}^s
+\cB_k\l[1+\int_{\{y\in M_n|a_{i,n}<|x_{i,n}y|<2b_i\}} K^-_{M_n}\r]\le$$ $$\le \cB_k s\l[1+\int_{M_n\cap B_2(x_n)} K^-_{M_n}\r].$$
+Therefore, we get a contradiction with $(\bigstar)$.
+
+\paragraph*{Case with spires.}
+First let us note that one can remove from $M\cap\bar B_1(x)$ a finite set of spires
+(see \ref{approx}), such that the remaining part can be covered by finite number of annuli:
+$$(M\backslash \{x_1,x_2,\dots,x_s\})\cap\bar B_1(x)\i\bigcup_{i=1}^S \operatorname{Ann}_{x_i},\ \  S\ge s.$$
+So centers $x_i$ for $i\le s$ are all spires and for $i> s$ are not.
+Then applying  the same estimate as before, we get
+$$\int_{M_n\cap B_1(x_n)} \Sc^+_{M_n}-
+\sum_{i=1}^s
+\int_{\{y\in M_n:\ |\tilde x_{i,n}y|<2a_{i,n}\}} \Sc^+_{M_n}
+\le$$
+$$\le
+\sum_{i=1}^S
+\int_{\{y\in M_n:\ 2a_{i,n}<|\tilde x_{i,n}y|<b_i\}} \Sc^+_{M_n}\le $$
+$$\le
+\sum_{i=1}^S
+\cB_k\l[1+\int_{\{y\in M_n:\ a_{i,n}<|\tilde x_{i,n}y|<b_i\}}K^-_{M_n}\r]\le $$
+$$\le
+\cB_k S\l[1+\int_{M_n\cap B_2(x_n)}K^-_{M_n}\r].
+$$
+From $(\bigstar)$ we can find $i\le s$ such that
+$$\frac{\int_{M_n\cap B_{2a_{i,n}(\tilde x_{i,n})}}\Sc^+_{M_n}}
+{1+\int_{M_n\cap B_{4a_{i,n}(\tilde x_{i,n})}}K^-_{M_n}}\to\infty.$$
+Clearly in this case $a_{i,n}>0$ for all large $n$ and $a_{i,n}\to 0$ as $n\to\infty$.
+
+Let us choose such $i$ and pass to shorter notations
+$$x:=x_i,\ b :=b_i,\ x_n:=x_{i,n},\ a_n:=a_{i,n}\ \text{and so on}.$$
+
+Consider rescalings $N'_n=\frac1{2a_n} N_n$.
+Let us denote by $M'_n$ the image of $M_n$ in $N'_n$ and for the rest, let us leave the same symbol for corresponding objects in $N_n$ and $N'_n$ (it is an abuse of notation).
+Note that
+$$\int_{M'_n\cap B_1(x_n)}
+\Sc^+_{M'_n}=\frac1{(2a_n)^{n-2}}\int_{M_n\cap B_{2a_{n}}(x_n)}\Sc^+_{M_{n}},$$
+$$\int_{M'_n\cap B_2(x_n)}K^-_{M'_n}=\frac1{(2a_n)^{n-2}}\int_{M_n\cap B_{4a_{n}}(x_n)}K^-_{M_n}.$$
+Therefore, since $a_n\to 0$,
+$$\frac{\int_{M_n\cap B_{2a_n}(\tilde x_n)}\Sc^+_{M_n}}
+{1+\int_{M_n\cap B_{4a_{n}}(\tilde x_n)}K^-_{M_n}}\to\infty\ \ \mbox{as}\ \ n\to\infty.$$
+This implies
+$$\frac{\int_{M'_n\cap B_{1}(\tilde x_{n})}\Sc^+_{M'_n}}
+{1+\int_{M'_n\cap B_2(\tilde x_{n})}K^-_{M'_n}}\to\infty\ \ \mbox{as}\ \ n\to\infty.$$
+
+Passing to a subsequence if necessarily, we can assume that $(N'_n,x'_n)\to (N',x')$ and repeat for $N'$ the same procedure as for $N$.
+It only remains to show
+\end{nothing}
+
+\begin{Nothing}{\bf Claim.} There may be only a finite number of such repetitions.
+In other words, after a finite number of repetitions, we will get a case with no spires.
+\end{Nothing}
+
+This claim follows from the fact that $\dir_{\delta_k} N'>\dir_{\delta_k} N$ (see property \ref{property}) plus the fact that $\dir_{\delta_k} N$ is an integer and $\dir_{\delta_k} N\le \dir_{\delta_k}(\RR^q)<\infty$, see \ref{dir}.
+
+\begin{thebibliography}{References}
+
+\bibitem[BGP]{BGP}Burago, Yu.; Gromov, M.; Perelman, G. \textit{A. D. Aleksandrov spaces
+with curvatures bounded below.} (Russian)  Uspekhi Mat. Nauk  47  (1992),  no.
+2(284), 3--51, 222;  translation in  Russian Math. Surveys  47  (1992),  no. 2,
+1--58
+
+\bibitem[Buyalo]{Buy} Buyalo, S. V. \textit{Some analytic properties of convex sets in Riemannian spaces.} (Russian)  Mat. Sb. (N.S.)  107(149)  (1978), no. 1, 37--55, 159.
+
+\bibitem[P-2003]{Pet} Petrunin, A.  \textit{Polyhedral approximations of Riemannian manifolds}, {Turkish J. Math.}, {27}, ({2003}), no.{1}, pp. {173--187},
+
+\bibitem[P-2007]{petrunin-2}  Petrunin, A. \textit{Semiconcave functions in Alexandrov's geometry,} {Surveys in Differential Geometry}, \textbf{11} (2007) pp. 135--202.
+
+\end{thebibliography}
+\end{document}

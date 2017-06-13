@@ -1,0 +1,585 @@
+%title:  DC structure on Alexandrov space (AMS-tex file)
+%author: g.perelman
+%date: 4/14/95
+
+\input amstex
+\input amsppt.sty
+\magnification=\magstep1
+\hsize = 6.5 truein
+\vsize = 9 truein
+\NoBlackBoxes
+\TagsAsMath
+\NoRunningHeads
+
+%The next three lines are so the logo doesn't print.
+\catcode`\@=11
+\redefine\logo@{}
+\catcode`\@=13
+
+%Section macros
+\newskip\sectionskipamount
+\sectionskipamount = 24pt plus 8pt minus 8pt
+\def\sectionskip{\vskip\sectionskipamount}
+\define\sectionbreak{%
+	\par  \ifdim\lastskip<\sectionskipamount
+	\removelastskip  \penalty-2000  \sectionskip  \fi}
+\define\section#1{%
+	\sectionbreak	%Encourages a page break, else inserts 24pt glue
+	\subheading{#1}%
+	\bigskip
+	}
+\font\tenbi=cmbxti10
+
+\addto\tenpoint{\normalbaselineskip 18truept \normalbaselines}
+\def\label#1{\par%
+	\hangafter 1%
+	\hangindent .5 in%
+	\noindent%
+	\hbox to .5 in{#1\hfill}%
+	\ignorespaces%
+	}
+
+%Operator name macros
+\define\op#1{\operatorname{\fam=0\tenrm{#1}}} %for text in math mode use
+                                              %\op{...}
+
+%QED box, from the TeXbook, p. 106.
+\redefine\qed{{\unskip\nobreak\hfil\penalty50\hskip2em\vadjust{}\nobreak\hfil
+    $\square$\parfillskip=0pt\finalhyphendemerits=0\par}}
+
+	
+	\define		\a		{\alpha}
+	\redefine	\b		{\beta}
+	\redefine	\d		{\delta}
+	\redefine	\D		{\Delta}
+	\define		\e		{\varepsilon}
+	\define		\g		{\gamma}
+	\define		\G		{\Gamma}
+	\redefine	\l		{\lambda}
+	\redefine	\L		{\Lambda}
+	\define		\s		{\sigma}
+	\redefine	\Sig  {\Sigma}
+	\define		\p		{\partial}
+\baselineskip=18 pt
+\document
+
+\centerline{\bf DC Structure on Alexandrov Space}
+\centerline{(preliminary version)}
+\centerline{\smc G.Perelman}
+
+\bigskip
+
+\vskip .5 truein
+
+\specialhead{1. Generalities} \endspecialhead
+
+{\bf 1.1 \ SC and DC functions on Euclidean spaces.} \ A function
+$f: \Bbb R^n\to\Bbb R$ is called semiconcave (SC) if it is locally
+representable as the difference
+of a concave function and a smooth function.  Clearly SC is closed w.r.t.
+addition,
+multiplication by positive numbers and taking minimum. Notice also that if
+$F:\Bbb R^\ell\to\Bbb R^m$ and $G:\Bbb R^m\to\Bbb  R^n$ have SC components
+and the components of $G$ are increasing in each argument, then $G\circ F$
+has SC
+components.
+
+We say that $f\in$ DC if it is locally representable as the difference of two SC
+functions or, equivalently, as the difference of two concave functions. It
+is easy
+to see that DC is an algebra, and $f/g\in DC$ whenever $f,g\in$ DC and $g$
+does not
+vanish anywhere. Morever, if maps $F:\Bbb R^\ell\to\Bbb R^m$ and $G:\Bbb
+R^m\to\Bbb
+R^n$ have DC components then so does $G\circ F$. (Indeed, we can (locally)
+decompose $F=F_2\circ F_1$, where $F_1:\Bbb R^\ell\to\Bbb R^{2m}$ has
+concave components, and $F_2(x_1,\dots ,x_m,y_1,\dots ,y_m)=(x_1-y_1,\dots ,
+x_m-y_m)$. Now $G\circ F_2$ has DC components, and we can write (locally)
+$G\circ F_2=G_1-G_2$, where $G_1$ and $G_2$ have concave components,
+increasing in each
+argument. It follows that $G_1\circ F_1$ and $G_2\circ F_1$ have concave
+components.)
+A homeomorphism $F:\Bbb R^n\to\Bbb R^n$ can be called a DC isomorphism when
+$f$ is
+DC if and only if $f\circ F$ is DC. It follows from the previous remark
+that $F$ is
+a DC isomorphism iff $F$ and $F^{-1}$ have DC components.
+
+\bigskip
+{\bf 1.2 \ SC and DC functions on Alexandrov spaces.} \ Let $M^n$ be a (compact
+when necessary) Alexandrov space with empty boundary.  A Lipschitz function
+$f:M\to\Bbb R$ is SC if for each $x\in M$ there is a neighborhood
+$U_x\ni x$ and $\lambda_x\in\Bbb R$ such that for every geodesic $\g$ in
+$U_x$ the
+function $f\circ\g(t)+\lambda_x t^2$ is concave in $t$. The basic example
+of an SC
+function is dist${}^2_x$ for some $x\in M$. Any continuous function $f$ can be
+uniformly approximated by SC functions $f_j(x)=\inf_{y\in M} (f(y)+j\cdot
+|xy|^2)$. If $f$ is SC in some domain $U\subset M$ and $K\subset U$ is
+compact then
+there is a function $\bar f$ which coincides with $f$ on $K$ and is SC on the whole
+$M$. (Indeed, take $\bar f=\min(f,a{\op{dist}}^2_{\partial U}-b)$ on $U$
+and $\bar f=a{\op{dist}}^2_{\partial U}-b$ on $M\backslash U$ for
+appropriate large
+$a,b$.)
+
+We say that $f$ is DC on $M$ if it is locally representable as the
+difference of two
+SC functions. Our previous remark shows that the word "locally" can be dropped.
+On the other hand, every DC function can be locally represented as the
+difference of
+two concave ones --- this follows from the existence of very concave
+functions in
+small neighborhoods of every point, see [P].
+
+\bigskip
+\specialhead{2. Background from [P] and an extension for general SC functions}
+\endspecialhead
+
+{\bf 2.1 \ Scalar product.} Every SC function has a differential at each point;
+the differential $d_xf$ is a concave homogeneous function on the tangent
+cone $C_x$,
+and its restriction $f'_{(x)}$ to the space of directions $\Sig_x\subset C_x$ is
+spherically concave. In particular, if $f=dist_y$, $y\neq x$, then
+$f'{(x)}=-\cos{\op{dist}}_{y'}=: \chi_{y'}$, where $y'$ is the set of
+directions of all
+shortest geodesics from $x$ to $y$.
+
+In general, if $\Sig$ is a compact Alexandrov space with curvature $\geq
+1$, with
+empty boundary, then a lipschitz function $f:\Sig\to\Bbb R$ is called
+spherically
+concave if $f(y)|xz|\geq f(x)|yz|+f(z)|xy|$ whenever $y$ lies on a shortest
+geodesic
+between $x$ and $z$. It is also convenient to consider 0-dimensional $\Sig$,
+consisting of two points $x,y$ at the distance $\pi$, and say that
+$f:\Sig\to\Bbb R$ is  spherically concave if $f(x)+f(y)\leq 0$.
+
+Using induction on dimension, we can define a scalar product of two spherically
+concave functions $f,g$ by
+$$
+\langle f,g\rangle =\sup_{x\in\Sig} (f(x)g(x)+
+\langle f'_{(x)},g'_{(x)}\rangle) \ ,
+$$
+where the term with derivatives is dropped when dim $\Sig=0$. Obviously,
+$\langle f,g\rangle=\langle g,f\rangle$, \
+$\langle\lambda f,g\rangle=\lambda\langle f,g\rangle$ if
+$\lambda\geq 0$, \ $\langle f,f\rangle\geq 0$ for any $f$. It is easy to check
+by induction that
+$$
+\align
+\langle\min (f,g),h\rangle & \leq \max(\langle f,h\rangle,\langle g,h\rangle) \\
+\langle f+g,h\rangle & \leq \langle f,h \rangle +\langle g,h\rangle \\
+\langle f,g\rangle^2 & \leq \langle f,f\rangle \langle g,g\rangle \\
+\langle \chi_A,h\rangle & = -\min_{a\in A} h(a) \ \ {\text{ for any compact }}
+   A\subset\Sig; \ \ {\text{in particular,}} \
+\langle \chi_A,\chi_B\rangle =\cos|A,B| \\
+\langle-f(a)\chi_a,g\rangle & = f(a)g(a)\leq \langle f,g\rangle \ \
+  {\text{ if $f$ attains its minimal value at }} a \ .
+\endalign
+$$
+Using quasigeodesics it is also easy to show by induction that
+$\| f\| := \langle f,f\rangle^{\frac 12} =-\min_{x\in\Sig} f(x)$.
+
+\bigskip
+{\bf Remark}. In [P] we used a different scalar product which did not work for
+general spherical concave functions.
+
+\bigskip
+{\bf 2.2 \ Consecutive approximations}. The scalar product, described in
+2.1, can be
+used to extend all the results of [P] by replacing the admissible functions and
+functions of class DER with general SC and spherically concave functions
+respectively. In particular, we have
+
+\proclaim{Lemma} {\rm (cf. [P, Lemma 1])} Let $\Sig^{n-1}$ be a compact
+Alexandrov space with curvature $\geq 1$, with empty boundary, and let
+$f_i:\Sig\to\Bbb R$, $i=0,1,\dots ,k$ be spherically concave functions.
+Assume that $\e=\min_{0\leq i\neq j\leq k} (-\langle f_i,f_j\rangle) > 0$.
+Then
+\roster
+\item $k\leq n$, and
+\item for each $i$, $1\leq i\leq k$, there exists $\xi_i\in\Sig$ such that
+$f_j(\xi_i)=0$ for $j\neq 0,i$, \ $f_0(\xi_i)\geq \e$, $f_i(\xi_i)\leq-\e$.
+\endroster
+\endproclaim
+
+Now let $f=(f_1,\dots f_k)$ be a map with SC components. A point $x\in M$
+is called regular for $F$ if there exist $\e_x > 0$ and $U_x\ni x$ such that for
+each $y\in U_x$ we have $\langle f'_{i(y)},f'_{j(y)}\rangle < -\e_p$
+for all $1\leq i\neq j\leq k$, and there exists $\xi^+\in\Sig_y$ with
+$f'_{i(y)}(\xi^+) > \e_p$ for all $1\leq i\leq k$. (In fact, the second
+condition
+needs to be checked only at $y=x$.) If $F$ is regular at $x$, then the
+statement (2)
+of the lemma allows us to use consecutive approximations to prove that $F$ is open
+near $x$. (Indeed, we can increase all the coordinates of $F(y)$ by moving
+in the
+direction $\xi^+$, and we can decrease the $i$-th coordinate without
+changing others
+by moving in the direction $\xi_i$ guaranteed by the lemma.) In case $k=n$,
+$F$ is
+in fact a bilipschitz homeomorphism near $x$. (The proof of local one-to-one
+property of $F$ is an easy argument based on volume and angle comparison and the
+statement (1) of the lemma; in [P] it is hidden in the first step of
+induction (from
+$k=n+1$ to $k=n$) in the proof of the Main Theorem.)
+
+\bigskip
+\specialhead{3. DC coordinate charts}\endspecialhead
+
+\proclaim{Proposition} Let $F=(f_1,\dots ,f_n)$ have SC components and be
+regular in
+some neighborhood of $x\in M$. Then
+\roster
+\item"(A)" If $f$ is SC near $x$ and $\langle f'_{(y)},f'_{i(y)}\rangle <
+-\e_x < 0$,
+  $1\leq i \leq n$, for all $y$ near $x$,\newline
+  then $f\circ F^{-1}$ is SC near $F(x)$.
+\item"(B)" If $\bar f$ is SC and increasing in each argument near $F(x)$ then
+  $\bar f\circ F$ is SC near $x$.
+\item"(C)" $f$ is DC near $x$ iff $f\circ F^{-1}$ is DC near $F(x)$.
+\endroster
+\endproclaim
+
+{\smc Proof}. (A) Let $\bar\gamma(t)$ be a straight segment in the image of $F$,
+$\gamma(t)=F^{-1}\circ\bar\gamma(t)$, \ $y=\gamma(0)$. From the fact that $F$ is
+bilipschitz it is easy to see that $\gamma$ has unique right and left
+tangent vectors
+$\gamma^+(0),\gamma^-(0)\in C_y$. Furthermore, $d_y f(\gamma^+(0))+d_y
+f(\gamma^-(0))\leq 0$. Indeed, otherwise, using concavity of $d_yf$ and
+$d_yf_i$, we
+could find a vector $v\in C_y$, such that $d_yf(v) > 0$ and $d_yf_i(v)\geq 0$,
+$1\leq i\leq n$, which leads to a contradiction with the statement (1) of
+the lemma
+in 2.2. Now we'll check that
+
+\roster
+\item $f\circ\gamma (t)\leq f(y)+f'_{(y)} (\gamma^+(0))t+Ct^2$ when $t > 0$ is
+small, for some $C$ independent of $t,y,\gamma$; the corresponding statement for
+$t < 0$ and $\gamma^-(0)$ is checked similarly.
+\endroster
+
+Consider a quasigeodesic $\s$ starting at $y$ in the direction
+$\gamma^+(0)/|\g^+(0)|$. Since $f,f_i$ are SC we have
+\roster
+\item"(2)" $f_i\circ\s(|\g^+(0)|t)\leq f_i(y)+f'_{i(y)} (\g^+(0))t+Ct^2$,
+$1 \leq i\leq n$, and a similar inequality for $f$.
+\endroster
+(See [PPet]; in fact, in this argument we only need the first step of the
+construction of quasigeodesics, which is not technically complicated.)
+On the other hand,
+\roster
+\item"(3)" $f_i\circ\g(t)=f_i(y)+f'_{i(y)} (\g^+(0))t$, \ $1\leq i\leq n$ by the
+definition of $\g$.
+\endroster
+Therefore, using the bilipschitz property of $F$, we can find a point $z$ in the
+$Ct^2$-neighborhood of $\s(|\g^+(0)|t)$, such that
+\roster
+\item"(4)" $f_i\circ\g(t)\geq f_i(z)$, $1\leq i\leq n$, and
+\item"(5)" $f(z)\leq f(y)+f'_{(y)}(\g^+(0))t+Ct^2$.
+\endroster
+We claim that
+\roster
+\item"(6)" $f(\g(t))\leq f(z)$
+\endroster
+Indeed, $z$ can be obtained from $\g(t)$ by consecutive approximations, as
+in 2.2,
+starting from $\g(t)$,and (4) guarantees that we only need to use the directions
+$\xi_i$ in the process, thus increasing the value of $f$. Now (1) follows
+from (5)
+and (6).
+
+(B) This is almost immediate from the definitions.
+
+(C) This follows easily from (A) and (B). For example, if $f$ is SC near $x$
+then\linebreak
+$\tilde f=f+N {\op{dist}}^2_z$ satisfies
+$\langle\tilde f'_{(y)},f'_{i(y)}\rangle < -\e_x < 0$ for all $1\leq i\leq n$
+and all $y$ sufficiently close to $x$, if $z$ is obtained by moving $x$ a
+little bit
+in the direction where all $f_i$ increase, and $N$ is large enough. \qed
+
+\bigskip
+Let $S$ denote the set of  singular points of $M$, and let $M^*\supset
+M\backslash
+S$ be the set of all points $x\in M$ such that $\Sig_x$ contains $n+1$
+directions
+making obtuse angles with each other. $M^*$ is open, convex, and
+${\op{dim}}_H(M\backslash M^*)\leq n-2$. (Convexity follows from Petrunin's work
+[Pet] on parallel translation, the other properties follow from the results of
+[BGP].) For each point $x\in M^*$ we can find a map $F:M\to\Bbb R^n$ with SC
+components, which is regular near $x$. The collection of all such maps form an atlas
+on $M^*$ and the transition functions are DC according to  statement (C) of our
+Proposition. Following [OS] we can make the transition functions continuously
+differentiable on $M\backslash S$ by taking the components of the
+coordinate maps in
+the form $\int_{y\in B}{\op{dist}}_y dH_n$.
+
+\bigskip
+\specialhead{4. Consequences}\endspecialhead
+
+{\bf 4.0 \ Analytical preliminaries}. First we introduce some notation.
+Let $F: U\subset M^*\to\Bbb R^n$ be a DC coordinate chart. We denote by
+$DC_0$ the
+class of DC functions on $F(U)$ which are continuously differentiable on
+$F(M\backslash S)$, and by $BV_0$ the class of bounded functions of bounded
+variation, which are continuous on $F(M\backslash S)$. At the end of the
+previous
+section we described a $DC_0$ atlas on $M^*$, and we can say that a
+function $f$ is
+$DC_0 \ (BV_0)$ near $x\in M^*$ if $f\circ F^{-1}$ is $DC_0 \ (BV_0)$ near
+$F(x)$
+for some (and hence for all) $DC_0$ charts $F$.
+
+It is well known that the first partial derivatives of the $DC \ (DC_0)$
+function
+are in $BV \ (BV_0)$, and the second partial derivatives are signed Radon
+measures,
+with $\frac{\p^2 f}{\p x_i\p x_j} =\frac{\p^2 f}{\p x_j \p x_i}$ as measures.
+We will also use a classical theorem of Alexandrov, which implies that DC
+functions
+have second differential a.e., and their first partial derivatives,
+considered a.e.,
+are differentiable a.e. It is also known (see [F, 4.5.9(29)]) that since
+$H_{n-1}(S)=0$, we have $\|Df\|(A)=0$ for every $H_{n-1}-\s$-finite set $A$ and
+$f\in BV_0$, in particular we can multiply any first partial derivative of
+$f$ by a
+bounded function which is continuous off a $H_{n-1}-\s$-finite set, and
+still get
+a signed Radon measure.
+
+The following assertions will be used in 4.2 and 4.3. (see [V] for more general
+results; my thanks to L.C.Evans for this reference)
+
+\proclaim{Lemma}
+\roster
+\item If $f,g$ are bounded and BV then $fg$ is BV. Moreover, if $g$ does not
+change sign and is bounded away from zero, then $f/g\in BV$.
+\item If $f,g\in BV_0(U)$  then $(fg)_{x_i}=f_{x_i}\cdot g+
+f\cdot g_{x_i}$ as measures.
+\item Let $g\in BV_0(U)$, $U\subset\Bbb R^n_x$, and let
+$F=(f_1,\dots ,f_n):U\to F(U)\subset\Bbb R^n_y$ be a $DC_0$ isomorphism. Then
+$$
+F_\#\left( \frac{\p g}{\p x_i} \ dx_1\wedge\dots\wedge dx_n\right) =
+{\op{det}}(J_F)^{-1} \left( \sum_j
+\frac{\p f_j}{\p x_i} \ \frac{\p(g\circ F^{-1})}{\p y_j}\right)
+dy_1\wedge\dots\wedge dy_n \ .
+$$
+\endroster
+\endproclaim
+
+{\smc Proof}. (1) Clear by approximation, using semicontinuity of variation
+measure.
+
+(2) We need to check that $\int_U (fg)h_{x_i}=\int_U f_{x_i}\cdot gh+
+\int_U f\cdot g_{x_i}h$ holds for any smooth function $h$ with compact support.
+Of course this is true if both $f,g$ are smooth, and it is easy to check by
+approximation if at least one of them is smooth. In general consider a
+sequence of
+mollified functions $g_j$; clearly $g_j$ converges to $g$ at each point
+where $g$ is
+continuous, which is $\|Df\|$--a.e. Thus $\int (fg_j)h_{x_i}\to\int
+(fg)h_{x_i}$ and $\int f_{x_i}g_j h\to\int f_{x_i}gh$ by the dominated
+convergence
+theorem. To check the convergence of the remaining term, fix a small
+$\delta > 0$
+and let $K$ be a compact set where $f$ has jumps of size $\geq\delta$.
+Since $\|Dg\|(K)=0$, we can find an open neighborhood $V\supset K$
+such that
+$\|Dg\|({\op{clos}} \ V) < \delta$ for large $j$. (Here we use that $\|Dg_j\|$
+weaky converges to $\|Dg\|$.) Since $f$ has no jumps of size $>\delta$ near
+$U\backslash
+V$, we can find a continuous function $\bar f$ which is uniformly $2\delta$-close to
+$f$ on
+$U\backslash{\op{clos}} \  V$. Now
+$$
+|\int_U f\cdot g_{x_i}h-\int_{U\backslash{\op{clos}} \  V} \bar f\cdot
+g_{x_i}h| \leq C\delta \ ,
+$$
+the same is true for $g_j$ with large $j$, and
+$$
+\int_{U\backslash{\op{clos}} \  V} \bar f(g_j)_{x_i}h\to
+\int_{U\backslash{\op{clos}} \  V} \bar f g_{x_i}h
+$$
+because $\|Dg_j\|$ converges weakly to $\|Dg\|$.
+
+(3) Arguing similarly to the proof of (2) we can cut off a neighborhood of
+a compact
+set where the first derivatives of the components of $F$ have jumps $\geq
+\delta$,
+then cover the rest of $U$ by small balls where those derivatives are nearly
+constant, and check that the left- and right-hand sides of our identity are
+nearly
+equal on each ball,  using DC functions as test functions. The details are
+left to
+the reader.   \qed
+
+\bigskip
+{\bf 4.1 \ DeRham complex}. Differential forms on $M$ can be defined as
+elements of
+the vector space generated by monomials of the form $f_0 df_1\wedge\dots\wedge
+df_m$, where all $f_i\in DC$, and two forms can be considered equivalent if they
+have the same values a.e. The exterior differentiation can be defined by
+$d(f_0df_1\wedge\dots\wedge df_m)= df_0\wedge\dots\wedge df_m$. Correctness
+of this
+definition follows from the identity
+$$
+df_0\wedge df_1\wedge\dots\wedge df_m(X_1\wedge\dots\wedge X_m)=
+\sum^m_{j=0} (-1)^j \frac{\p}{\p x_j}(
+f_0 df_1\wedge\dots\wedge df_m(X_0\wedge\dots\wedge \hat
+X_j\wedge\dots\wedge X_m))
+$$
+for coordinate vectors $X_0,\dots ,X_m$ of some DC coordinate system $F$,
+which holds at each point where all $f_i\circ F^{-1}$ are twice differentiable,
+which is a.e.
+
+\bigskip
+{\bf 4.2 \  Metric tensor}. Let $F=(f_1,\dots ,f_m)$ be a $DC_0$ coordinate
+chart near $x\in M^*$. Then, according to [OS], the metric of $M$ near $x$
+can be
+expressed by a metric tensor, defined and continuous at each nonsingular point.
+Now let $f$ be a distance function, $f={\op{dist}}_y$, \ $y\neq x$. Then
+$f\circ F^{-1}$ is DC  near $F(x)$, in particular, differentiable a.e., and
+we have
+$$
+\sum_{i,j} g^{ij} \ \p(f\circ F^{-1})/ \p x_i\cdot
+\p(f\circ F^{-1})/ \p x_j =1 \ \ {\text{a.e.}}   \tag 1
+$$
+Now suppose $x\in M^\delta$ for sufficiently small $\delta > 0$, where
+$M^\delta=\{ x\in M: H_{n-1}(\Sig_x) > (1-\delta)H_{n-1}(S^{n-1})\}$ is an open,
+convex subset of $M$, containing $M\backslash S$. Then we can choose a $DC_0$
+coordinate chart $F$ and a collection of distance  functions $f^\a$, \
+$1\leq \a\leq n(n+1)/2$, in such a way that the determinant of the system
+of linear
+equations (1) with $f^\a$ in place of $f$, with unknowns $g^{ij}$, is
+positive and
+bounded away from zero in a small neighborhood of $F(x)$. (Indeed, this is
+easy to
+arrange with some safety margin if $M=\Bbb R^n$, and the  condition $x\in
+M^\delta$
+guarantees that euclidean inequalities for
+$\frac{\p (f^\a\circ F^{-1})}{\p x_i}$ continue to hold in $M$ up to a
+small error.)
+Thus the components of the metric tensor can be expressed as rational
+functions of
+the first derivatives of $f^\a\circ F^{-1}$. In particular, since
+$f^\a\circ F^{-1}$ are DC near $F(x)$, we conclude that the components of
+the metric
+tensor are in $BV_0$ and differentiable a.e.
+
+\bigskip
+{\bf Remark}. This improves the earlier results of Otsu and Shioya [OS].
+
+\bigskip
+{\bf 4.3 \ Metric connection}. Let $A,B,C$ be bounded vector fields on
+$M^\delta$,
+and assume in addition that $A$ and $C$ are continuous off an
+$H_{n-1}-\s$-finite
+set, and $B \in BV_0$ (that is, the coordinates of $B$ in $DC_0$ charts are
+$BV_0$).
+Then there exists a signed Radon measure $\langle\nabla_A B,C\rangle$ on
+$M^\delta$
+which becomes
+$$
+\sum_{i,j,k} A^i C^j \left(
+\frac{\p B^k}{\p x_i} \ g_{kj} +\tfrac 12 B^k
+\left( \frac{\p g_{ij}}{\p x_k} +\frac{\p g_{kj}}{\p x_i} -
+\frac{\p g_{ik}}{\p x_j}\right)\right) \cdot {\op{det}}(g_{ij})^{\frac 12}
+dx_1\wedge\dots\wedge dx_n
+$$
+in each $DC_0$ coordinate chart $F: U\subset M^\delta \to\Bbb R^n_x$.
+The correctness of the definition is proved by a standard computation using the
+observations of 4.0.
+
+\bigskip
+{\bf 4.4 \ The Hessian of SC functions}.
+\proclaim{Proposition} Let $F$ be a $DC_0$ chart near $x$ and let $f$ be a DC
+function near $x$. Assume that $C_x=\Bbb R^n$, \ $f\circ F^{-1}$ has first and
+second differentials at $F(x)$, and the components of the metric tensor
+w.r.t. $F$
+are differentiable at $F(x)$. Then $d_xf$ is linear on $C_x$ and there exists a
+quadratic form $H_xf$ on $C_x$ such that
+$$
+f(y)=f(x)+d_xf(y')|xy| +\tfrac 12 H_xf(y',y')|xy|^2 +o(|xy|^2) \ ,
+$$
+where $y'\in \Sig_x$ denotes the direction of (any) shortest geodesic $xy$.
+Moreover, $H_xf$ can be calculated using  standard formulas.
+\endproclaim
+
+{\smc Proof}. First of all, we can make a smooth change of coordinates in such a way
+that in the new coordinate system $G$ the metric tensor at $G(x)$ becomes the
+identity matrix, and its first derivatives vanish. (Indeed, consider a
+smooth metric
+with the same values of the metric tensor and its first derivatives at
+$F(x)$, find
+the coordinate transformation that produces normal coordinates, and apply
+it to $F$.)
+Thus we have $|g_{ij}(G(y))-\delta_{ij}|=o(|xy|)$, and therefore
+\roster
+\item $\left| \ |yz|-|G(y)G(z)| \ \right| =o(r^2)$ for $y,z\in B_x(r)$.
+  Moreover, we have
+\item $|\angle yxz-\angle G(y)G(x)G(z)| =o(|yz|)$ when all angles of the
+triangle
+  $G(y)G(x)G(z)$ are bounded away from zero.
+\endroster
+ Indeed, take a point $p$ such that $G(p)$ is in the plane $G(y)G(x)G(z)$, \
+$G(x)$ is contained in the triangle $G(p)G(y)G(z)$ and all angles formed by
+these
+four points are bounded away from zero. Then (1) implies that
+$$
+\align
+\tilde\angle yxz +\tilde\angle yxp +\tilde\angle zxp  & \geq
+\angle G(y)G(x)G(z) +\angle G(y)G(x)G(p) +
+\angle G(z)G(x)G(p) + o(|yz|) \\
+&= 2\pi +o(|yz|) \ .
+\endalign
+$$
+On the other hand, $\tilde\angle yxz\leq\angle yxz$, \
+$\tilde\angle yxp\leq \angle yxp$, \
+$\tilde\angle zxp\leq \angle zxp$, and
+$\angle yxz+\angle yxp +\angle zxp\leq 2\pi$, whence
+$|\tilde\angle yxz-\angle yxz|=o(|yz|)$ and (2) follows from (1).
+
+Now let $y$ be close to $x$. We claim that the angle at $G(x)$ between the
+directions of the straight segment $G(x)G(y)$ and the image of shortest geodesic
+$G(xy)$ is $o(|xy|)$ --- clearly this proves the proposition.
+To check the claim, find a point $y_1$ such that
+$|xy_1|=|xy|/2$, the direction of $G(xy)$ is between that of $G(x)G(y)$ and of
+$G(x)G(y_1)$,and the angle between the latter ones is $\pi/2$. Then (2)
+implies that
+$\angle(G(xy_1),G(x)G(y_1)) > \angle (G(xy),G(x)G(y))-o(|xy|)$. Thus if the
+estimate
+$\angle (G(xy),G(x)G(y))=o(|xy|)$ were false, we could construct a sequence
+$y_i\to x$ with angles  $\angle (G(xy_i),G(x)G(y_i))$ bounded away from zero,
+which is clearly impossible.  \qed
+
+\bigskip
+{\bf Remark}. In a recent work [O], Otsu proves a slightly weaker version
+of this
+proposition for distance functions. His technique is completely different,
+and has
+the advantage of expressing  Hessian of a distance function in terms of
+derivatives
+of the norms of Jacobi fields, which is a result of independent interest.
+
+\bigskip\bigskip
+\centerline{\bf References}
+\bigskip
+\label{[BGP]} Yu. Burago, M. Gromov and G. Perelman, Alexandrov spaces with
+  curvature bounded below.  {\it Russ. Math. Surveys}, 1992.
+\label{[F]} H. Federer, {\it Geometric Measure Theory}, 1969.
+\label{[O]} Y. Otsu, Almost everywhere existence of second differentiable
+structure
+  of Alexandrov spaces, preprint.
+\label{[OS]} Y. Otsu and T. Shioya, The Riemannian structure of Alexandrov
+  spaces, {\it JDG}, 1994.
+\label{[P]} G. Perelman, Elements of Morse theory on Alexandrov spaces,
+  {\it SPb Math. J.}, 1994.
+\label{[Pet]} A. Petrunin, Parallel transportation and second variation,
+  preprint.
+\label{[PPet]} G.Perelman, A.Petrunin, Quasigeodesics and gradient curves
+on Alexandrov spaces, preprint. 
+\label{[V]} A.I.Vol'pert, Spaces BV and quasi-linear equations, {\it Matem.
+Sbornik} , 1967.
+\enddocument
